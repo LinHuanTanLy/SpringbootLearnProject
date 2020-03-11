@@ -1,4 +1,4 @@
-package com.ly.learn01.domain.banner
+package com.ly.learn01.domain.dao.banner
 
 import javax.persistence.*
 

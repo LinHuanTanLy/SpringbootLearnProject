@@ -1,6 +1,6 @@
 package com.ly.learn01.controller
 
-import com.ly.learn01.domain.banner.Banner
+import com.ly.learn01.domain.dao.banner.Banner
 import com.ly.learn01.service.BannerService
 import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation

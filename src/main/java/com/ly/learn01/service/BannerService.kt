@@ -1,7 +1,9 @@
 package com.ly.learn01.service
 
-import com.ly.learn01.dao.banner.BannerRepository
-import com.ly.learn01.domain.banner.Banner
+import com.google.common.collect.ImmutableMap
+import com.ly.learn01.domain.repository.banner.BannerRepository
+import com.ly.learn01.domain.dao.banner.Banner
+import com.ly.learn01.exception.ResourceNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -39,7 +41,9 @@ class BannerService {
     private fun getBannerById(id: Long): Banner {
         val bannerOptional = bannerRepository.findById(id)
         if (bannerOptional.isEmpty) {
-            throw Exception()
+            val map = HashMap<String, Any>()
+            map["资源id没有找到"] = id
+            throw ResourceNotFoundException(map)
         } else {
             return bannerOptional.get()
         }
