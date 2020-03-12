@@ -1,5 +1,6 @@
 package com.ly.learn01.controller
 
+import com.ly.learn01.api.CommResult
 import com.ly.learn01.domain.dao.banner.Banner
 import com.ly.learn01.service.BannerService
 import io.swagger.annotations.Api
@@ -16,7 +17,7 @@ class IndexController {
 
     @GetMapping("/getBanner")
     @ApiOperation("查询所有的Banner")
-    fun getBanner(): List<Banner> = indexService.getBanner()
+    fun getBanner(): CommResult<List<Banner>>? = CommResult.suc(indexService.getBanner())
 
     @PostMapping("/addBanner")
     @ApiOperation("添加banner数据")
@@ -24,7 +25,7 @@ class IndexController {
 
     @PutMapping("/updateBanner")
     @ApiOperation("更新banner数据")
-    fun updateBanner(@RequestParam(name = "id") id: Long, @RequestParam(name = "title") title: String): Banner = indexService.updateBanner(id, title)
+    fun updateBanner(@RequestParam(name = "id") id: Long, @RequestParam(name = "title") title: String): CommResult<Banner> = CommResult.suc(indexService.updateBanner(id, title))
 
     @DeleteMapping("deleteBanner")
     @ApiOperation("删除banner")
