@@ -14,4 +14,6 @@ data class Banner(@Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
+
+
 }

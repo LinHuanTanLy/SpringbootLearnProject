@@ -47,4 +47,35 @@ class IndexController {
         val result = redisTemplate.opsForValue().get("name")
         return CommResult.suc(result)
     }
+
+    @GetMapping("getFromMyBatis")
+    @ApiOperation("从mybatis中获取数据")
+    fun getFromMyBatis(): CommResult<List<Banner>> {
+        return indexService.getBannerFromMybatis()
+    }
+
+    @GetMapping("getOneFromMyBatis")
+    @ApiOperation("从mybatis中获取单个banner信息")
+    fun getOneFromMybatis(@RequestParam("id") id: Long): CommResult<Banner> {
+        return indexService.getOneBannerFromMybatis(id)
+    }
+
+    @PostMapping("addWithMyBatis")
+    @ApiOperation("通过mybatis添加信息数据")
+    fun addOneWithMybatis(@RequestParam("title") title: String): CommResult<Banner> {
+        val banner = Banner(title = title)
+        return indexService.insertIntoWithMyBatis(banner)
+    }
+
+    @PutMapping("updateWithMyBatis")
+    @ApiOperation("通过mybatis更新数据")
+    fun updateWithMyBatis(@RequestBody banner: Banner): CommResult<Banner> {
+        return indexService.updateWithMyBatis(banner)
+    }
+
+    @DeleteMapping("deleteWithMyBatis")
+    @ApiOperation("通过mybatis删除数据")
+    fun deleteWithMyBatis(@RequestBody banner: Banner): CommResult<Banner> {
+        return indexService.deleteWithMyBatis(banner)
+    }
 }

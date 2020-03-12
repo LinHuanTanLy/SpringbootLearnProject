@@ -19,4 +19,5 @@ spring:
         max-idle: 20
         min-idle: 0
     timeout: 3000
-
+mybatis:
+  type-aliases-package: com.ly.learn01.domain.dao.banner
