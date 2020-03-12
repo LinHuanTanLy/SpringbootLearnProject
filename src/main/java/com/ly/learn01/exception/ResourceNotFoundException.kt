@@ -5,7 +5,5 @@ import java.lang.RuntimeException
 
 class ResourceNotFoundException(data: HashMap<String, Any>) : BaseException(ErrorCode.RESOURCE_NOT_FOUND, data) {
 
-    init {
-        println("报错了.....$data")
-    }
+
 }

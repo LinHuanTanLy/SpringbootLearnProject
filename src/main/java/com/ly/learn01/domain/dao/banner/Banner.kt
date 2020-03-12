@@ -1,5 +1,6 @@
 package com.ly.learn01.domain.dao.banner
 
+import java.io.Serializable
 import javax.persistence.*
 
 /**
@@ -7,10 +8,10 @@ import javax.persistence.*
  */
 
 @Entity
-class Banner(@Column
-             var title: String? = null) {
+data class Banner(@Column
+             var title: String? = null) :Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null
+    var id: Long? = null
 
 }

@@ -3,6 +3,7 @@ package com.ly.learn01.service
 import com.google.common.collect.ImmutableMap
 import com.ly.learn01.domain.repository.banner.BannerRepository
 import com.ly.learn01.domain.dao.banner.Banner
+import com.ly.learn01.exception.BadRequestException
 import com.ly.learn01.exception.ResourceNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -39,6 +40,9 @@ class BannerService {
      * 获取单个banner
      */
     private fun getBannerById(id: Long): Banner {
+        if (id == null) {
+            throw BadRequestException()
+        }
         val bannerOptional = bannerRepository.findById(id)
         if (bannerOptional.isEmpty) {
             val map = HashMap<String, Any>()
