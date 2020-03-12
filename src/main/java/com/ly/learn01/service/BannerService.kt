@@ -1,15 +1,14 @@
 package com.ly.learn01.service
 
-import com.google.common.collect.ImmutableMap
 import com.ly.learn01.api.CommResult
 import com.ly.learn01.constant.ErrorCode
 import com.ly.learn01.domain.repository.banner.BannerRepository
 import com.ly.learn01.domain.dao.banner.Banner
-import com.ly.learn01.exception.BadRequestException
 import com.ly.learn01.exception.ResourceNotFoundException
 import com.ly.learn01.mapper.BannerMapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import kotlin.collections.HashMap
 
 @Service
 class BannerService {
@@ -38,20 +37,17 @@ class BannerService {
     fun deleteBanner(id: Long): Boolean {
         val result = getBannerById(id)
         bannerRepository.delete(result)
-        return bannerRepository.findById(id).isEmpty
+        return true
     }
 
     /**
      * 获取单个banner
      */
     private fun getBannerById(id: Long): Banner {
-        val bannerOptional = bannerRepository.findById(id)
-        if (bannerOptional.isEmpty) {
-            val map = HashMap<String, Any>()
-            map["资源id没有找到"] = id
-            throw ResourceNotFoundException(map)
-        } else {
-            return bannerOptional.get()
+        try {
+            return bannerRepository.getOne(id)
+        } catch (e: Exception) {
+            throw  ResourceNotFoundException()
         }
     }
 
