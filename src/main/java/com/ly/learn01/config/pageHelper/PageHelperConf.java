@@ -1,4 +1,4 @@
-package com.ly.learn01.config;
+package com.ly.learn01.config.pageHelper;
 
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Configurable;

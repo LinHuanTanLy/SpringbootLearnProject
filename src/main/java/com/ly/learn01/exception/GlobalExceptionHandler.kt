@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.ResponseBody
 
-@ControllerAdvice
+@ControllerAdvice  //异常处理
 class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(BaseException::class)

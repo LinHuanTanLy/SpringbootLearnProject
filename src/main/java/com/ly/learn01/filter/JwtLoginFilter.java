@@ -36,7 +36,7 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse resp) throws AuthenticationException, IOException, ServletException {
+    public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse resp) throws AuthenticationException, IOException {
         User user = new ObjectMapper().readValue(req.getInputStream(), User.class);
 
         System.out.println("attemptAuthentication---,the user info is   " + user.toString());

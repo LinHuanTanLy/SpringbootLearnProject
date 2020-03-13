@@ -33,6 +33,10 @@ public class CommResult<T> {
         return new CommResult<T>(code.getCode(), code.getMessage(), null);
     }
 
+    public static <T> CommResult<T> fail(T data) {
+        return new CommResult<T>(ErrorCode.REQUEST_ERROR.getCode(), ErrorCode.REQUEST_ERROR.getMessage(), data);
+    }
+
     public long getCode() {
         return code;
     }

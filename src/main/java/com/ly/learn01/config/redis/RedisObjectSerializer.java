@@ -1,4 +1,4 @@
-package com.ly.learn01.config;
+package com.ly.learn01.config.redis;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.serializer.Deserializer;

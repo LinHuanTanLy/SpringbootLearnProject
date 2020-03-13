@@ -29,14 +29,16 @@ public class JwtFilter extends GenericFilterBean {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
 
         String jwtToken = req.getHeader("authorization");
-        System.out.println("the jwtToken is " + jwtToken);
-        Claims claims = Jwts.parser().setSigningKey("sang@123").parseClaimsJws(jwtToken.replace("Bearer", "")).getBody();
-        //获取当前用户名
-        String userName = claims.getSubject();
-        // 授予的权限
-        List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList((String) claims.get("authorities"));
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, null, authorityList);
-        SecurityContextHolder.getContext().setAuthentication(token);
-        filterChain.doFilter(req, servletResponse);
+        if(jwtToken!=null) {
+            System.out.println("the jwtToken is " + jwtToken);
+            Claims claims = Jwts.parser().setSigningKey("sang@123").parseClaimsJws(jwtToken.replace("Bearer", "")).getBody();
+            //获取当前用户名
+            String userName = claims.getSubject();
+            // 授予的权限
+            List<GrantedAuthority> authorityList = AuthorityUtils.commaSeparatedStringToAuthorityList((String) claims.get("authorities"));
+            UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userName, null, authorityList);
+            SecurityContextHolder.getContext().setAuthentication(token);
+            filterChain.doFilter(req, servletResponse);
+        }
     }
 }

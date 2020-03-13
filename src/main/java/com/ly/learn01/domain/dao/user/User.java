@@ -17,6 +17,29 @@ public class User implements UserDetails {
     private List<Role> roles;
     private List<GrantedAuthority> authorityList;
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    public List<GrantedAuthority> getAuthorityList() {
+        return authorityList;
+    }
+
+    public void setAuthorityList(List<GrantedAuthority> authorityList) {
+        this.authorityList = authorityList;
+    }
 
     @Override
     @JsonIgnore
@@ -61,4 +84,7 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
+
 }
