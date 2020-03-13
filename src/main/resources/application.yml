@@ -21,3 +21,5 @@ spring:
     timeout: 3000
 mybatis:
   type-aliases-package: com.ly.learn01.domain.dao.banner
+pagehelper:
+  helperDialect=mysql:
