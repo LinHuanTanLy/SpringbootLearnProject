@@ -18,4 +18,21 @@ public class ArticleService {
         return articleMapper.getAllArticle();
     }
 
+
+    public List<Article> getAllArticleByState(int state) {
+        return articleMapper.getAllArticleByState(state);
+    }
+
+
+    public Article getArticle(int id) {
+        return articleMapper.getArticleById(id);
+    }
+
+    public int updateArticle(int id, int state) {
+        return articleMapper.updateArticleState(id, state);
+    }
+
+    public int addArticle(Article article) {
+        return articleMapper.addArticle(article);
+    }
 }
